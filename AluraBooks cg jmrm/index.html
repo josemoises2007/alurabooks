@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi primera página web</title>
+  
+<title>AluraBooks</title>
+<link rel="stylesheet" href="stylo/cabeça.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="reset.css">
+</head>
+<body>
+    <header class="cabeçalho">
+        <div class="container">
+            <input type="checkbox" id="menu" class="container__botao">
+            <label for="menu">
+              <span class="cabeçalho__menu-hamburguer container__imagem" onclick="toggleMenu()"></span>
+            </label>
+            <ul class="lista-menu">
+              <li class="lista-menu__titulo titulo-1">Clássicos</li>
+              <li class="lista-menu__item">
+                <a href="#" class="lista-menu__link">Clássicos</a>
+              </li>
+              <li class="lista-menu__item">
+                <a href="#" class="lista-menu__link">Esportivos</a>
+              </li>
+              <li class="lista-menu__item">
+                <a href="#" class="lista-menu__link">Monster Truck</a>
+              </li>
+              <li class="lista-menu__titulo titulo-2">Cuidadosamente</li>
+              <li class="lista-menu__item">
+                <a href="#" class="lista-menu__link">Opção 1</a>
+              </li>
+              <li class="lista-menu__item">
+                <a href="#" class="lista-menu__link">Opção 2</a>
+              </li>
+              <li class="lista-menu__item">
+                <a href="#" class="lista-menu__link">Opção 3</a>
+              </li>
+            </ul>
+            <img src="img/Logo.svg" alt="Logo da Alurabooks">
+          </div>
+
+        </div>
+        <div class="container">
+            <a href="#"><img src="img/Favoritos.svg" alt="Meus favoritos"class='container__imagem'></a>
+            <a href="#"><img src="img/Compras.svg" alt="Carrinho de compras" class='container__imagem'></a>
+            <a href="#" ><img src="img/Usuario.svg" alt="Meu perfil" class='container__imagem'></a>
+            </div>
+            </header>
+            <section class="banner">
+                <h2 class="banner__titulo">titulo da loja</h2>
+<p class="banner__texto">texto da loja</p>
+<input type="search" class="banner__pesquisa" placeholder="escreva....">
+            </section>
+</body>
+</html>
+
+<script>
+    function toggleMenu() {
+  const listaMenu = document.querySelector('.lista-menu');
+  listaMenu.classList.toggle('titulo-1');
+  setTimeout(() => {
+    listaMenu.classList.toggle('titulo-2');
+  }, 900);
+}
+</script>

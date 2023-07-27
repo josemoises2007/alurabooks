@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AluraBooks</title>
+<link rel="stylesheet" href="stylo/cabeça.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="reset.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="ALURA.jpeg" />
+</head>
+<body>
+  <div class="background-overlay"></div><div class="loading-container">
+  <progress id="loading-progress" max="100"></progress>
+  <img id="loading-image" src="download (4).jpeg" alt="Loading"></div > 
+  
+  
+  
+  
+  <script>
+    window.addEventListener('load', function() {
+      showNotification();
+    });
+
+    function showNotification() {
+      var notificationContainer = document.createElement('div');
+      notificationContainer.className = 'notification-container';
+
+      var titleElement = document.createElement('h2');
+      titleElement.textContent = 'Título de la Notificación';
+
+      var messageElement = document.createElement('p');
+      messageElement.textContent = 'Esta es una notificación de ejemplo. ¿Deseas aceptarla?';
+
+      var acceptButton = document.createElement('button');
+      acceptButton.textContent = 'Aceptar';
+      acceptButton.addEventListener('click', function() {
+        // Acción al aceptar la notificación
+        console.log('Notificación aceptada');
+        hideNotification();
+      });
+
+      var rejectButton = document.createElement('button');
+      rejectButton.textContent = 'No Aceptar';
+      rejectButton.addEventListener('click', function() {
+        // Acción al no aceptar la notificación
+        console.log('Notificación no aceptada');
+        hideNotification();
+      });
+
+      notificationContainer.appendChild(titleElement);
+      notificationContainer.appendChild(messageElement);
+      notificationContainer.appendChild(acceptButton);
+      notificationContainer.appendChild(rejectButton);
+
+      document.body.appendChild(notificationContainer);
+
+      // Mostrar la notificación después de un retraso
+      setTimeout(function() {
+        notificationContainer.classList.add('show');
+      }, 500);
+
+      function hideNotification() {
+        // Ocultar y eliminar la notificación
+        notificationContainer.classList.remove('show');
+        setTimeout(function() {
+          document.body.removeChild(notificationContainer);
+          document.body.removeChild(document.querySelector('.background-overlay'));
+        }, 500);
+      }
+    }
+  </script>
+  
+  
+  
+  <style> progress{
+    box-shadow: 0px 28px 47px 17px rgba(0,0,0,0.1);
+      animation: colorAnimation 1s infinite;
+    border-radius:5px;
+ 
+   -webkit-transition: -webkit-transform .5s ease;
+   transition: transform .5s ease; }
+  progress:hover{-moz-transition: all 2.3s;
+
+-webkit-transition: all 2.3s;
+
+transition: all 2.3s;
+  -webkit-transform: scale(2.1);
+   transform: scale(2.1);   
+  }
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+  width: 370px;
+  height: 40px;
+  position:center;
+  left:50%;
+  top:50%;
+}
+.loading-container {
+ z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+     position:fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+
+#loading-image {
+  margin-top: 20px;
+  display: none;
+  border-radius: 80px;
+  border:1px solid blue;
+}body{
+  background:white;
+ 
+
+}progress[value]::-webkit-progress-bar {
+  padding: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+progress[value]::-webkit-progress-value {
+  animation: colorAnimation 1s infinite;
+  height: 18px;
+  border-radius: 4px;
+  background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #7DC8E8, #5856d6, #ff2d55);
+  transition: 0.4s linear;
+  transition-property: width, background-color;
+  animation: colorAnimation 1s infinite;
+}
+
+progress[value]::-webkit-progress-value {
+  animation: colorAnimation 1s infinite;
+  width: 100%;
+  background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #7DC8E8, #5856d6, #ff2d55);
+}
+
+@keyframes colorAnimation {
+  0% {
+    background-image: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #7DC8E8, #5856d6, #ff2d55);
+  }
+  20% {
+    background-image: linear-gradient(to right, #5ac8fa, #007aff, #7DC8E8, #5856d6, #ff2d55, #4cd964);
+  }
+  40% {
+    background-image: linear-gradient(to right, #007aff, #7DC8E8, #5856d6, #ff2d55, #4cd964, #5ac8fa);
+  } 
+  60% {
+    background-image: linear-gradient(to right, #7DC8E8, #5856d6, #ff2d55, #4cd964, #5ac8fa, #007aff);
+  }
+  100% {
+    background-image: linear-gradient(to right, #5856d6, #ff2d55, #4cd964, #5ac8fa, #007aff, #7DC8E8);
+  }
+}
+</style>
+<script>
+  const progress = document.getElementById('loading-progress');
+const image = document.getElementById('loading-image');
+
+function simulateLoading() {
+  progress.value += 0.9;
+
+  if (progress.value < progress.max) {
+    requestAnimationFrame(simulateLoading);
+  } else {
+    image.style.display = 'block';
+    setTimeout(function() {
+      fadeOut();
+    }, 3000);
+  }
+}
+
+function fadeOut() {
+  const container = document.querySelector('.loading-container');
+  container.style.opacity = '0';
+  container.style.transition = 'opacity 1s ease-in-out';
+
+  setTimeout(function() {
+    container.style.display = 'none';
+  }, 3000);
+}
+
+simulateLoading();
+</script>
+
+    <header class="cabeçalho">
+        <div class="container">
+            <input type="checkbox" id="menu" class="container__botao">
+            <label class="lab" for="menu">
+              <span class="cabeçalho__menu-hamburguer container__imagem" onclick="toggleMenu()"></span>
+            </label>
+            <ul class="lista-menu">
+              <li class="lista-menu__titulo titulo-1">Clássicos</li>
+              <li class="lista-menu__item">
+                <a href="#" class="lista-menu__link">Clássicos</a>
+              </li>
+              <li class="lista-menu__item">
+                <a href="#" class="lista-menu__link">Esportivos</a>
+              </li>
+              <li class="lista-menu__item">
+                <a href="#" class="lista-menu__link">Monster Truck</a>
+              </li>
+              
+            </ul>
+            <img src="img/Logo.svg" alt="Logo da Alurabooks"class="container__imagem">
+            <h1 class="container__titulo"><b class="container__titulo--negrito">Alura</h1>
+          </div>
+<style>
+
+.background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .notification-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: 9999;
+    }
+
+    .notification-container.show {
+      opacity: 1;
+    }
+
+    .notification-container h2 {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    .notification-container p {
+      margin: 0;
+    }
+
+    .notification-container button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  #cae:hover{
+    -webkit-animation: rotate-scale-up 0.65s linear both;
+	        animation: rotate-scale-up 0.65s linear both;
+  }
+ 
+@-webkit-keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+            transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+            transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+            transform: scale(1) rotateZ(360deg);
+  }
+}
+@keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+            transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+            transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+            transform: scale(1) rotateZ(360deg);
+  }
+}
+
+#dd:hover{
+  -webkit-animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: rotate-90-cw 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          transition: transform 0.3s;
+      
+}
+#dd{
+  transition: transform 0.3s;
+  
+}
+
+@-webkit-keyframes rotate-90-cw {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+}
+@keyframes rotate-90-cw {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  
+}
+
+
+</style>
+        </div>
+        <div class="container">
+           <a href="#"><img src="img/Favoritos.svg" alt="Meus favoritos"class='container__imagem'id="likeButton" ></a> 
+
+            <a href="#"><img src="img/Compras.svg"  id="cae"alt="Carrinho de compras" class='container__imagem'></a>
+            <a href="#" ><img src="img/Usuario.svg" id="d"alt="Meu perfil" class='container__imagem'></a>
+            </div>
+            </header>
+            <section class="banner">
+                <h2 class="banner__titulo">Já sabe por onde começar?</h2>
+<p class="banner__texto">Encontre em nossa estante o que precisa para seu desenvolvimento!</p>
+<input type="search" class="banner__pesquisa" placeholder="Qual será sua próxima leitura?">
+            </section>
+
+
+              <section class="carrossel">
+                <h2 class="carrossel__titulo">Novos lançamentos</h2>
+                <div class="carousel">
+                <div class="carousel-container">
+
+
+                    <div class="carousel-item">
+                        <img src="image 25.png" alt="Imagen 1" class="im" >
+                    </div>
+                    
+                    <div class="carousel-item">
+                      <img src="image 25.png" alt="Imagen 1" class="im" >
+                  </div>
+                    <div class="carousel-item">
+                      <img src="image 25.png" alt="Imagen 1" class="im" >
+                  </div>
+                    <div class="carousel-item">
+                        <img src="image 26.png" alt="Imagen 2" class="im">
+                    </div>
+                   <div class="carousel-item">
+                        <img src="image 27.png" alt="Imagen 3" class="im">
+                    </div>
+                  
+                   
+                  
+                  
+                  
+                </div>
+                <div class="carousel-controls">
+                  
+                    <img class="prev-btn" src="https://github.com/josemoises2007/escola/assets/106701602/d8b4ff6b-a6a2-4b42-8af0-65d3e271949d" alt="Anterior"   id="prevBtn">
+                    <img class="prev-btn" src="https://github.com/josemoises2007/escola/assets/106701602/9b178a31-a026-4828-9dae-cbc8c81559d6 " alt="Siguiente" id="nextBtn">
+                </div>
+            </div>
+           
+            <div class="card">
+              <!-- 1º linha -->
+              <div class="card__descrição">
+                  <!-- 1º coluna -->
+                  <div class="descrição">
+                      <h3 class="descrição__titulo">Talvez você também se interesse por...</h3>
+                      <h2 class="descrição__titulo-livro">Angular 11 e Firebase</h2>
+                      <p class="descrição__texto">Construindo uma aplicação integrada.</p>
+                  </div>
+                  <!-- 2º coluna -->
+                  <img src="img/Perfil-escritora 2.png" class="descrição__imagem" >
+              </div>
+  
+              <!-- 2º linha -->
+              <div class="card__botões">
+                  <!-- 1º coluna -->
+                  <ul class="botões">
+                      <li class="botões__item"><img src="img/Favoritos.svg" class="o" id="likeButto" ></li>
+                      <li class="botões__item"><img src="img/Compras.svg" id="dd"></li>
+                  </ul>
+                  <!-- 2º coluna -->
+                  <a href="#" class="botões__ancora">Saiba mais</a>
+              </div>
+          </div> 
+          <section class="carrosse">
+            <h2 class="carrossel__titulo">Novos lançamentos</h2>
+            <div class="carouse">
+            <div class="carousel-containe">
+              <div class="carousel-ite">
+                <img src="image 27.png" alt="Imagen 2" class="i">
+            </div>
+
+              <div class="carousel-ite">
+                    <img src="image 25.png" alt="Imagen 1"
+                        class="i" >
+                </div><div class="carousel-ite">
+                    <img src="image 26.png" alt="Imagen 2" class="i">
+                </div>
+                <div class="carousel-ite">
+                  <img src="image 27.png" alt="Imagen 2" class="i">
+              </div>
+                
+              
+              
+               <div class="carousel-ite">
+                    <img src="image 27.png" alt="Imagen 2" class="i">
+                </div>
+              
+               
+              
+            </div>
+            <div class="carousel-control">
+              
+                <img class="prev-bt" src="https://github.com/josemoises2007/escola/assets/106701602/d8b4ff6b-a6a2-4b42-8af0-65d3e271949d" alt="Anterior"   id="prevBt">
+                <img class="prev-bt" src="https://github.com/josemoises2007/escola/assets/106701602/9b178a31-a026-4828-9dae-cbc8c81559d6 " alt="Siguiente" id="nextBt">
+            </div>
+        </div><style>
+          .clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  float: right;
+}
+
+.radio:hover,
+.radio :hover ~ .radio {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ .radio {
+  color: orange;
+  transform: scale(3.1);
+  animation: cptCircleFill 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.radio {
+  padding: 10px;
+  color: grey;
+  width: 120px;
+  height: 125px;
+}@keyframes cptCircle {
+  0% {
+    -webkit-transform: rotate(0) scale(.5) skew(1deg);
+    transform: rotate(0) scale(.5) skew(1deg);
+    opacity: 0.07;
+  }
+  30% {
+    -webkit-transform: rotate(0) scale(.7) skew(1deg);
+    transform: rotate(0) scale(.7) skew(1deg);
+    opacity: 0.07;
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(.7) skew(1deg);
+    transform: rotate(0) scale(.7) skew(1deg);
+    opacity: 0.07;
+  }
+}
+
+@keyframes cptCircleFill {
+  0% {
+    -webkit-transform: rotate(0) scale(.6) skew(1deg);
+    transform: rotate(0) scale(.6) skew(1deg);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: rotate(0) scale(1) skew(1deg);
+    transform: rotate(0) scale(1) skew(1deg);
+    opacity: .5;
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(.6) skew(1deg);
+    transform: rotate(0) scale(.6) skew(1deg);
+    opacity: .5;
+  }
+}
+
+.radio {
+  font-size: 20px;
+  transition: 0.5s;
+  animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.radio:hover img {
+  transform: scale(13);
+}
+
+input[type="radio"] {
+  display: none;
+}
+.co{
+  float: left;
+}
+        </style>
+        <div class="card">
+          <!-- 1º linha -->
+          <div class="card__descrição">
+              <!-- 1º coluna -->
+              <div class="descrição"><div class="co"><p class="clasificacion">
+                    <input id="radio1" type="radio" name="estrellas" value="5"><label for="radio1" class="radio">★</label><input id="radio2" type="radio" name="estrellas" value="4"><label for="radio2"class="radio">★</label><input id="radio3" type="radio" name="estrellas" value="3"><label for="radio3"class="radio">★</label><input id="radio4" type="radio" name="estrellas" value="2"><label for="radio4"class="radio">★</label><input id="radio5" type="radio" name="estrellas" value="1"><label for="radio5"class="radio">★</label>
+                    </p></div></br>
+                  <h3 class="descrição__titulo">Autora do Mês</h3>
+                  <h2 class="descrição__titulo-livro">Juliana Agarikov</h2>
+                  <p class="descrição__texto">Analista de sistemas e escritora, Juliana é especialista em Front-End. </p>
+              </div>
+              <!-- 2º coluna -->
+              <img src="escri.png" class="descrição__imagem" >
+          </div>
+
+          <!-- 2º linha -->
+          <div class="card__botões">
+              <!-- 1º coluna -->
+              <ul class="botões">
+                  <li class="botões__item"><img src="img/Favoritos.svg" class="o" id="likeButt" ></li>
+                  <li class="botões__item"><img src="img/Compras.svg" id="dd"></li>
+              </ul>
+              <!-- 2º coluna -->
+              <a href="#" class="botões__ancora">Saiba mais</a>
+          </div>
+      </div> 
+        <script>
+     const carouselContaine = document.querySelector('.carousel-containe');
+const carouselIte = document.querySelectorAll('.carousel-ite');
+const prevBt = document.getElementById('prevBt');
+const nextBt = document.getElementById('nextBt');
+let slideIndex = 0;
+
+function showIte(index) {
+    carouselContaine.style.transform = `translateX(${index * 100}%)`;
+}
+
+function prevIte() {
+    if (slideIndex === 0) {
+        slideIndex = carouselIte.length - 1;
+    } else {
+        slideIndex--;
+    }
+    showIte(slideIndex);
+}
+
+function nextIte() {
+    if (slideIndex === carouselIte.length - 1) {
+        slideIndex = 0;
+    } else {
+        slideIndex++;
+    }
+    showIte(slideIndex);
+}
+
+prevBt.addEventListener('click', prevIte);
+nextBt.addEventListener('click', nextIte);
+
+setInterval(nextIte, 1000);
+        </script>
+        </section>
+        
+        
+       
+          
+
+
+            <section class="tópicos">
+              <h2 class="tópicos__titulo">TÓPICOS VISITADOS RECENTEMENTE</h2>
+              <ul class="tópicos__lista">
+                  <li class="tópicos__item">
+                      <a href="#" class="tópicos__link">Android</a>
+                  </li>
+                  <li class="tópicos__item">
+                      <a href="#" class="tópicos__link">Marketing Digital</a>
+                  </li>
+                  <li class="tópicos__item">
+                      <a href="#" class="tópicos__link">Agile</a>
+                  </li>
+                  <li class="tópicos__item">
+                      <a href="#" class="tópicos__link">Startups</a>
+                  </li>
+                  <li class="tópicos__item">
+                      <a href="#" class="tópicos__link">HTML e CSS</a>
+                  </li>
+                  <li class="tópicos__item">
+                      <a href="#" class="tópicos__link">Python</a>
+                  </li>
+                  <li class="tópicos__item">
+                      <a href="#" class="tópicos__link">OO</a>
+                  </li>
+                  <li class="tópicos__item">
+                      <a href="#" class="tópicos__link">Java</a>
+                  </li>
+              </ul>
+          </section>
+
+          <section class="contato">
+            <div class="contato__descrição">
+                <h2 class="contato__titulo">Fique por dentro das novidades!</h2>
+                <p class="contato__texto">Atualizações de e-books, novos livros, promoções e outros.</p>
+            </div>
+            <input type="email" placeholder="Cadastre seu e-mail" class="contato__email">
+        </section>
+    
+        <hr />
+        <footer class="rodapé">
+          <h2 class="rodapé__titulo">Grupo Alura</h2>
+      
+      </footer>
+<style>
+
+  .tópicos__link:hover{
+    -webkit-animation: color-change-2x 2s linear infinite alternate both;
+	        animation: color-change-2x 2s linear infinite alternate both;
+
+          transition: 0.5s;
+  }
+
+  @-webkit-keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #b22cff;
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #b22cff;
+  }
+}
+
+
+#likeButton {
+  cursor: pointer;
+  transition: filter 0.3s;
+}
+
+#likeButton.clicked {
+  filter: brightness(0) saturate(100%) invert(68%) sepia(100%) saturate(7466%) hue-rotate(359deg);
+}
+#likeButton:hover {
+  transform: scale(3.1); /* Agranda la imagen al pasar el mouse por encima */
+}
+#likeButton  {
+  transition: transform 0.3s;
+}
+
+#likeButto {
+  cursor: pointer;
+  transition: filter 0.3s;
+}
+
+#likeButto.clicked {
+  filter: brightness(0) saturate(100%) invert(68%) sepia(100%) saturate(7466%) hue-rotate(359deg);
+}
+#likeButto:hover {
+  transform: scale(3.1); /* Agranda la imagen al pasar el mouse por encima */
+}
+#likeButto {
+  transition: transform 0.3s;
+}
+
+#likeButt {
+  cursor: pointer;
+  transition: filter 0.3s;
+}
+
+#likeButt.clicked {
+  filter: brightness(0) saturate(100%) invert(68%) sepia(100%) saturate(7466%) hue-rotate(359deg);
+}
+#likeButt:hover {
+  transform: scale(3.1); /* Agranda la imagen al pasar el mouse por encima */
+}
+#likeButt {
+  transition: transform 0.3s;
+}
+</style>
+</body>
+</html>
+
+<script>
+    function toggleMenu() {
+  const listaMenu = document.querySelector('.lista-menu');
+  listaMenu.classList.toggle('titulo-1');
+  setTimeout(() => {
+    listaMenu.classList.toggle('titulo-2');
+  }, 900);
+}
+</script>
+<script>
+
+const carouselContainer = document.querySelector('.carousel-container');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        function showItem(index) {
+            carouselContainer.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function prevItem() {
+            if (currentIndex === 0) {
+                currentIndex = carouselItems.length - 1;
+            } else {
+                currentIndex--;
+            }
+            showItem(currentIndex);
+        }
+
+        function nextItem() {
+            if (currentIndex === carouselItems.length - 1) {
+                currentIndex = 0;
+            } else {
+                currentIndex++;
+            }
+            showItem(currentIndex);
+        }
+
+        prevBtn.addEventListener('click', prevItem);
+        nextBtn.addEventListener('click', nextItem);
+
+        setInterval(nextItem, 1000);
+
+</script>
+<script>
+   // Obtén el elemento del botón de "me gusta"
+   const likeButton = document.getElementById('likeButton');
+
+// Agrega el controlador de eventos al botón de "me gusta"
+likeButton.addEventListener('click', () => {
+  likeButton.classList.toggle('clicked'); // Alternar la clase 'clicked'
+});
+</script>
+<script>const likeButto = document.getElementById('likeButto');
+
+  // Agrega el controlador de eventos al botón de "me gusta"
+  likeButto.addEventListener('click', () => {
+    likeButto.classList.toggle('clicked'); // Alternar la clase 'clicked'
+  });</script>
+  
+  <script>
+  const likeButt = document.getElementById('likeButt');
+
+    // Agrega el controlador de eventos al botón de "me gusta"
+    likeButt.addEventListener('click', () => {
+      likeButt.classList.toggle('clicked'); // Alternar la clase 'clicked'
+    });</script>
+    

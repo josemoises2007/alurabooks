@@ -1,0 +1,144 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Rubik+Mono+One&display=swap');
+:root {
+    --cor-de-fundo: #EBECEE;
+    --branco: #FFFFFF;
+    --laranja:#EB9B00;
+    --azuld:linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
+    }
+    .container__botao {
+        display: none;
+        transition: opacity 2.3s ease;
+      }
+      
+      .cabeçalho__menu-hamburguer {
+        cursor: pointer;
+         transition: opacity 2.3s ease;
+      }
+      
+      .lista-menu {
+        opacity: 0;
+        transition: opacity 2.3s ease;
+      }
+      
+      .lista-menu.titulo-1 {
+        animation: aparecer-titulo 2.3s ease forwards;
+      }
+      
+      .lista-menu.titulo-2 {
+        animation: aparecer-titulo 0.3s ease forwards 0.3s;
+      }
+      
+      @keyframes aparecer-titulo {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+    *{
+        font-family:"Rubik Mono One";
+    }
+    .lista-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        
+    width: 60vw;}
+       
+.container__botao:checked ~ .lista-menu{
+    display: block;
+    
+}
+.lista-menu__titulo,
+.lista-menu__item{
+    padding: 1em;
+    background-color: var(--branco);
+}
+.lista-menu__titulo{
+    color: var(--laranja);
+}
+.lista-menu__link{
+background: var(--azuld);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-transform: uppercase;
+font-family:"Rubik Mono One";
+}
+
+.banner{
+  background: var(--azuld);
+  text-align: center;
+  padding: 2.5em 2em;
+}
+.hidden-input {
+  display: inline-block;
+  position: relative;
+
+
+}
+.banner__pesquisa{
+  background: transparent;
+  border: 1px solid white;
+  color: #FFFFFF;
+  border-radius: 24px;
+  padding: 1em;
+  width: 100%;
+}
+.banner__titulo{
+  font-weight: 700;
+}
+.banner__texto{
+  font-weight: 500;
+  margin: 1em 0em;
+}
+.banner__pesquisa::placeholder{
+  font-family: "Rubik Mono One";
+  font-size: 14px;
+  font-weight: 400;
+  color:#FFFFFF;
+  text-align: center;
+  background-image: url("img/Vector.svg");
+  background-repeat: no-repeat;
+  background-position: 1em;
+}
+
+.banner__titulo, .banner__texto{
+color: #FFFFFF;
+font-family: "Roboto";
+font-size: 30px;
+}
+    body {
+    background-color: var(--cor-de-fundo);
+    }
+    .container {
+        display: flex;
+        align-items: center;
+        }
+         .cabeçalho {background-color: var(--branco);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            background-color: var(--branco);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+       }.container__imagem {
+        padding: 1em;
+        }.cabeçalho__menu-hamburguer {
+            width: 24px;
+            height: 24px;
+            color:black;
+            background-image: url("img/Menu.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+            }
+            
