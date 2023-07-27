@@ -21,7 +21,92 @@
   <img id="loading-image" src="download (4).jpeg" alt="Loading"></div > 
   
   
-  
+  <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #e2e2e2; padding: 10px; text-align: center;">
+            <p>Usamos cookies para melhorar sua experiência em nosso site. Aceite os cookies para continuar..</p>
+            <button onclick="acceptCookies()"class="beautiful-button">aceitar<span class="spinner"></span></button>
+            <button onclick="declineCookies()"class="beautiful-button">Rejeitar</button>
+        </div>
+    <style>
+      #cookie-banner{
+
+color:#007bff;
+font-size: 16px;
+
+      }
+ .beautiful-button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo al pasar el cursor sobre el botón */
+        .beautiful-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+    </style>
+        <!-- Resto del contenido de tu página -->
+    
+        <script>
+            function setCookie(name, value, days) {
+                const expirationDate = new Date();
+                expirationDate.setTime(expirationDate.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = "expires=" + expirationDate.toUTCString();
+                document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+            }
+    
+            function acceptCookies() {
+                const url = "https://josemoises2007.github.io/alurabooks/"; // Aquí puedes establecer la URL que deseas almacenar en la cookie
+                setCookie("myURL", url, 365); // La cookie expirará en 365 días
+                document.getElementById("cookie-banner").style.display = "none"; // Ocultar el banner
+                // Aquí puedes ejecutar cualquier código adicional necesario para configurar las cookies aceptadas
+            }
+    
+            function declineCookies() {
+                setCookie("myURL", "", 365); // Eliminar la cookie estableciendo una fecha de expiración en el pasado
+                document.getElementById("cookie-banner").style.display = "none"; // Ocultar el banner
+                // Aquí puedes ejecutar cualquier código adicional necesario para gestionar las cookies rechazadas
+            }
+    
+            // Comprobar si se aceptaron las cookies al cargar la página y mostrar/ocultar el banner según corresponda
+            window.onload = function() {
+                const myURL = getCookie("myURL");
+                if (myURL) {
+                    document.getElementById("cookie-banner").style.display = "none";
+                    // Puedes usar la URL almacenada en la cookie como desees, por ejemplo, redirigir al usuario:
+                    // window.location.href = myURL;
+                } else {
+                    document.getElementById("cookie-banner").style.display = "block";
+                }
+            };
+    
+            // Función para obtener el valor de una cookie
+            function getCookie(name) {
+                const cookieName = name + "=";
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const cookieArray = decodedCookie.split(";");
+    
+                for (let i = 0; i < cookieArray.length; i++) {
+                    let cookie = cookieArray[i];
+                    while (cookie.charAt(0) === " ") {
+                        cookie = cookie.substring(1);
+                    }
+                    if (cookie.indexOf(cookieName) === 0) {
+                        return decodeURIComponent(cookie.substring(cookieName.length, cookie.length));
+                    }
+                }
+                return "";
+            }
+        </script>
   
   <script>
     window.addEventListener('load', function() {
