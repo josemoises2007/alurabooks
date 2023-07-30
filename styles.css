@@ -131,7 +131,7 @@ font-size: 30px;
             justify-content: space-between;
             align-items: center;
        }.container__imagem {
-        padding: 1em;
+        padding: 0.5em;
         }.cabeçalho__menu-hamburguer {
             width: 24px;
             height: 24px;
